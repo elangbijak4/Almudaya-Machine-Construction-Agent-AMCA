@@ -1,0 +1,80 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://amca.local/schemas/task-spec.schema.yaml"
+title: "AMCA Machine Specification"
+type: object
+additionalProperties: false
+required: [schema_version, machine_id, nodes, edges]
+properties:
+  schema_version:
+    const: "1.0"
+  machine_id:
+    type: string
+    pattern: "^[a-z][a-z0-9_-]{0,63}$"
+  nodes:
+    type: array
+    minItems: 1
+    maxItems: 64
+    items:
+      oneOf:
+        - $ref: "#/$defs/inputSourceNode"
+        - $ref: "#/$defs/emptyConfigNode"
+  edges:
+    type: array
+    maxItems: 128
+    items:
+      $ref: "#/$defs/edge"
+$defs:
+  nodeBase:
+    type: object
+    additionalProperties: false
+    required: [id, component, config]
+    properties:
+      id:
+        type: string
+        pattern: "^[a-z][a-z0-9_-]{0,63}$"
+      component:
+        type: string
+      config:
+        type: object
+  inputSourceNode:
+    allOf:
+      - $ref: "#/$defs/nodeBase"
+      - type: object
+        properties:
+          component:
+            const: "input_source"
+          config:
+            type: object
+            additionalProperties: false
+            required: [input_key]
+            properties:
+              input_key:
+                type: string
+                pattern: "^[a-z][a-z0-9_-]{0,63}$"
+  emptyConfigNode:
+    allOf:
+      - $ref: "#/$defs/nodeBase"
+      - type: object
+        properties:
+          component:
+            enum: [validate_text, analysis_a, analysis_b, aggregate_results, generate_report]
+          config:
+            type: object
+            maxProperties: 0
+  edge:
+    type: object
+    additionalProperties: false
+    required: [from, out, to, in]
+    properties:
+      from:
+        type: string
+        pattern: "^[a-z][a-z0-9_-]{0,63}$"
+      out:
+        type: string
+        pattern: "^[a-z][a-z0-9_-]{0,63}$"
+      to:
+        type: string
+        pattern: "^[a-z][a-z0-9_-]{0,63}$"
+      in:
+        type: string
+        pattern: "^[a-z][a-z0-9_-]{0,63}$"

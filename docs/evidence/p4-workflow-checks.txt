@@ -1,0 +1,18 @@
+P4 workflow check commands
+Interpreter: C:\Users\HP\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe
+Date: 2026-10-22
+COMPILEALL_EXIT=0
+AMCA workflow validation: PASS
+Scaffold consistency checks passed. This does not establish software correctness.
+SCAFFOLD_EXIT=0
+AMCA workflow validation: PASS
+Scaffold consistency checks passed. This does not establish software correctness.
+P3_GATE_EXIT=0
+AMCA workflow validation: BLOCKED
+- P4 has not been explicitly approved by the project owner
+- P4 approval is missing approved_by
+- P4 approval is missing approved_at
+- P4 approval is missing decision_evidence
+
+4 blocking issue(s); 0 warning(s).
+P4_GATE_EXIT=1

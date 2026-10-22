@@ -1,0 +1,212 @@
+schema_version: "1.0"
+project:
+  id: "AMCA-POC"
+  name: "Almudaya Machine Construction Agent"
+  version: "0.2.0"
+  status: "accepted"
+  gate_records_file: "workflow/gate-records.yaml"
+  gate_validator: "tools/validate_workflow.py"
+  description: >
+    A stage-gated Waterfall project for a minimal machine-construction
+    agent that builds, independently verifies, and safely executes
+    declarative non-linear computational graphs.
+  entrypoint: "agent.md"
+  project_charter: "docs/00-project-charter.md"
+  phase_status_file: "docs/phase-status.md"
+
+workflow:
+  model: "waterfall"
+  strict_phase_order: true
+  allow_phase_overlap: false
+  require_exit_criteria: true
+  require_evidence_for_completion: true
+  require_human_approval_for_transition: true
+  gate_validator_required: true
+  change_control: "docs/change-control.md"
+  traceability_matrix: "docs/traceability-matrix.md"
+  default_rule: >
+    Work only on the active phase. A phase may advance only when its
+    deliverables are reviewed, its exit criteria are evidenced, and
+    phase-status.md, this file, and workflow/gate-records.yaml are updated consistently. The gate validator must pass, and the project owner must explicitly approve the transition.
+
+  phases:
+    - id: "P0"
+      name: "Project Charter and Scope"
+      document: "docs/00-project-charter.md"
+      status: "approved"
+      depends_on: []
+      deliverables:
+        - "docs/00-project-charter.md"
+        - "docs/phase-status.md"
+      exit_criteria:
+        - id: "P0-EC1"
+          condition: "Problem, objectives, scope, exclusions, and stakeholders are explicit."
+          evidence: "Reviewed project charter."
+        - id: "P0-EC2"
+          condition: "Baseline PoC scenario and high-level acceptance goals are agreed."
+          evidence: "Charter section and recorded review decision."
+        - id: "P0-EC3"
+          condition: "Initial risks and assumptions are recorded."
+          evidence: "Charter risk and assumption lists."
+      next_phase: "P1"
+
+    - id: "P1"
+      name: "Requirements Analysis"
+      document: "docs/01-requirements-specification.md"
+      status: "approved"
+      depends_on: ["P0"]
+      deliverables:
+        - "docs/01-requirements-specification.md"
+        - "docs/traceability-matrix.md"
+      exit_criteria:
+        - id: "P1-EC1"
+          condition: "Functional and non-functional requirements have unique IDs and acceptance criteria."
+          evidence: "Reviewed requirements specification."
+        - id: "P1-EC2"
+          condition: "Out-of-scope behavior and trust boundaries are explicit."
+          evidence: "Requirements specification."
+        - id: "P1-EC3"
+          condition: "Every requirement is mapped to a planned verification method."
+          evidence: "Traceability matrix."
+      next_phase: "P2"
+
+    - id: "P2"
+      name: "System and Software Design"
+      document: "docs/02-system-architecture.md"
+      status: "approved"
+      depends_on: ["P1"]
+      deliverables:
+        - "docs/02-system-architecture.md"
+        - "docs/03-data-model-and-yaml-schemas.md"
+        - "docs/04-verification-design.md"
+        - "docs/05-runtime-and-execution-design.md"
+      exit_criteria:
+        - id: "P2-EC1"
+          condition: "Module boundaries and data flow are documented."
+          evidence: "Architecture document."
+        - id: "P2-EC2"
+          condition: "Machine, graph, contract, and verification result formats are specified."
+          evidence: "Data model and schema document."
+        - id: "P2-EC3"
+          condition: "Verifier/runtime trust boundaries and failure modes are designed."
+          evidence: "Verification and runtime design documents."
+      next_phase: "P3"
+
+    - id: "P3"
+      name: "Implementation Planning and Contracts"
+      document: "docs/06-implementation-plan.md"
+      status: "approved"
+      depends_on: ["P2"]
+      deliverables:
+        - "docs/06-implementation-plan.md"
+        - "docs/07-test-and-validation-plan.md"
+        - "docs/traceability-matrix.md"
+      exit_criteria:
+        - id: "P3-EC1"
+          condition: "Module/file plan and implementation order are explicit."
+          evidence: "Implementation plan."
+        - id: "P3-EC2"
+          condition: "Test cases cover positive, negative, and boundary behavior."
+          evidence: "Test and validation plan."
+        - id: "P3-EC3"
+          condition: "Requirements map to design, code modules, and tests."
+          evidence: "Updated traceability matrix."
+      next_phase: "P4"
+
+    - id: "P4"
+      name: "Implementation"
+      document: "docs/08-implementation-record.md"
+      status: "approved"
+      depends_on: ["P3"]
+      deliverables:
+        - "docs/08-implementation-record.md"
+        - "src/"
+        - "tests/"
+      exit_criteria:
+        - id: "P4-EC1"
+          condition: "All in-scope modules are implemented or explicitly deferred."
+          evidence: "Implementation record and repository contents."
+        - id: "P4-EC2"
+          condition: "Automated tests exist for implemented requirements."
+          evidence: "Test files and test run output."
+        - id: "P4-EC3"
+          condition: "No task-provided arbitrary code is executed."
+          evidence: "Code review and tests."
+      next_phase: "P5"
+
+    - id: "P5"
+      name: "Verification and Validation"
+      document: "docs/09-verification-report.md"
+      status: "approved"
+      depends_on: ["P4"]
+      deliverables:
+        - "docs/09-verification-report.md"
+        - "docs/traceability-matrix.md"
+      exit_criteria:
+        - id: "P5-EC1"
+          condition: "Automated test suite has been run and results are recorded."
+          evidence: "Actual test output."
+        - id: "P5-EC2"
+          condition: "Negative tests confirm invalid graphs are rejected."
+          evidence: "Test results and verifier reports."
+        - id: "P5-EC3"
+          condition: "Known limitations and unresolved defects are documented."
+          evidence: "Verification report."
+      next_phase: "P6"
+
+    - id: "P6"
+      name: "Release, Evaluation, and Handover"
+      document: "docs/10-release-and-evaluation.md"
+      status: "approved"
+      depends_on: ["P5"]
+      deliverables:
+        - "docs/10-release-and-evaluation.md"
+        - "README.md"
+        - "docs/phase-status.md"
+      exit_criteria:
+        - id: "P6-EC1"
+          condition: "Setup, execution, and test instructions are reproducible."
+          evidence: "Release checklist and documented commands."
+        - id: "P6-EC2"
+          condition: "Evaluation claims are supported by recorded evidence."
+          evidence: "Evaluation results and evidence paths."
+        - id: "P6-EC3"
+          condition: "Release limitations and future research tasks are explicit."
+          evidence: "Release document."
+      next_phase: null
+
+agent_policy:
+  require_gate_validator_before_transition: true
+  require_human_approval_before_transition: true
+  may_edit:
+    - "The active phase document"
+    - "Documents explicitly required by the active phase"
+    - "phase-status.md"
+    - "orchestration.yaml status fields"
+  may_not:
+    - "Skip a phase"
+    - "Mark criteria complete without evidence"
+    - "Silently change scope or acceptance criteria"
+    - "Claim tests passed unless they were run"
+    - "Execute arbitrary code from YAML or generated specifications"
+  change_request_required_for:
+    - "Scope changes"
+    - "Architecture changes after P2 approval"
+    - "New runtime dependencies"
+    - "Changes to acceptance criteria"
+    - "Changes to the trust model"
+
+baseline:
+  language: "Python"
+  specification_format: "YAML"
+  baseline_requires_external_api_key: false
+  execution_policy: "allowlisted_components_only"
+  graph_policy:
+    directed: true
+    acyclic: true
+    reject_unknown_nodes: true
+    reject_unknown_components: true
+  verification_statuses:
+    - "verified"
+    - "rejected"
+    - "inconclusive"

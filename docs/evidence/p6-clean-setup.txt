@@ -1,0 +1,18 @@
+P6 clean setup evidence
+Fresh virtual environment created from bundled CPython with: C:\Users\HP\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m venv .venv-p6
+Interpreter: Python 3.12.14
+Date: 2026-10-22
+--- requirements install check ---
+Requirement already satisfied: PyYAML<7.0,>=6.0 in d:\amca_waterfall_scaffold_v0.2\.venv-p6\lib\site-packages (from -r requirements-dev.txt (line 1)) (6.0.3)
+PIP_INSTALL_EXIT=0
+--- installed packages ---
+pip==25.0.1
+PyYAML==6.0.3
+PIP_LIST_EXIT=0
+--- dependency consistency ---
+No broken requirements found.
+PIP_CHECK_EXIT=0
+--- repository-root traceability audit ---
+18 requirement rows cover 18 FR/NFR IDs; 26 source/test path references exist
+TRACEABILITY_AUDIT_EXIT=0
+

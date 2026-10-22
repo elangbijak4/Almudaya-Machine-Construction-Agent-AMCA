@@ -1,0 +1,380 @@
+Clean virtual environment reference example runs
+Interpreter: Python 3.12.14
+PyYAML: 6.0.3
+Date: 2026-10-22
+--- validate valid graph ---
+{
+  "edge_count": 6,
+  "machine_id": "reference-analysis",
+  "node_count": 6,
+  "status": "valid"
+}
+VALIDATE_EXIT=0
+--- verify valid graph ---
+{
+  "assumptions": [
+    "Trusted component registry profile: amca-builtin-v1",
+    "Verification checks declared structure and interfaces only."
+  ],
+  "candidate_sha256": "90f1f0b5e9a27fed91364e1a923e9b78821bf9c24ddc2385b59fc475fd21c8da",
+  "checks": [
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "candidate_shape",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "graph_bounds",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "unique_node_ids",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "known_components",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "edge_endpoints",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "unique_connections",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "interface_compatibility",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "required_inputs",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "acyclic",
+      "status": "passed"
+    },
+    {
+      "details": {
+        "reason_count": 0
+      },
+      "id": "registry_profile_binding",
+      "status": "passed"
+    }
+  ],
+  "profile_id": "amca-verifier-v1",
+  "reasons": [],
+  "report_version": "1.0",
+  "status": "verified"
+}
+VERIFY_EXIT=0
+--- run valid graph ---
+RUN_EXIT=0
+--- display saved report ---
+{
+  "candidate_sha256": "90f1f0b5e9a27fed91364e1a923e9b78821bf9c24ddc2385b59fc475fd21c8da",
+  "execution_order": [
+    "input",
+    "validate",
+    "analysis_a",
+    "analysis_b",
+    "aggregate",
+    "report"
+  ],
+  "inputs_sha256": "d82842c47aad2638b0d9782d31c61525eb8bf579c70284e2e5c3a69ea86cd572",
+  "machine_id": "reference-analysis",
+  "node_records": [
+    {
+      "component": "input_source",
+      "node_id": "input",
+      "output_summary": {
+        "byte_size": 31,
+        "sha256": "d82842c47aad2638b0d9782d31c61525eb8bf579c70284e2e5c3a69ea86cd572",
+        "value_type": "object"
+      },
+      "status": "succeeded"
+    },
+    {
+      "component": "validate_text",
+      "node_id": "validate",
+      "output_summary": {
+        "byte_size": 31,
+        "sha256": "d82842c47aad2638b0d9782d31c61525eb8bf579c70284e2e5c3a69ea86cd572",
+        "value_type": "object"
+      },
+      "status": "succeeded"
+    },
+    {
+      "component": "analysis_a",
+      "node_id": "analysis_a",
+      "output_summary": {
+        "byte_size": 34,
+        "safe_summary": {
+          "character_count": 20
+        },
+        "sha256": "ccb55d42bedee0616bd1f21974e140984d779cdf69c2db0674472b9b03720f5b",
+        "value_type": "object"
+      },
+      "status": "succeeded"
+    },
+    {
+      "component": "analysis_b",
+      "node_id": "analysis_b",
+      "output_summary": {
+        "byte_size": 28,
+        "safe_summary": {
+          "word_count": 4
+        },
+        "sha256": "6028bb324a2b88801650ba518cf1d41d717e75d400730e04d4aba250747b5069",
+        "value_type": "object"
+      },
+      "status": "succeeded"
+    },
+    {
+      "component": "aggregate_results",
+      "node_id": "aggregate",
+      "output_summary": {
+        "byte_size": 36,
+        "safe_summary": {
+          "summary": "characters=20; words=4"
+        },
+        "sha256": "9187dbe57f1633001d768032f3651d9c75b53040c4d332181134374ef094d7c6",
+        "value_type": "object"
+      },
+      "status": "succeeded"
+    },
+    {
+      "component": "generate_report",
+      "node_id": "report",
+      "output_summary": {
+        "byte_size": 47,
+        "safe_summary": {
+          "summary": "characters=20; words=4"
+        },
+        "sha256": "78c22c0ff6e293e9fb52bfbc83e0e356f907d45a72da845883b14bc40ec146f3",
+        "value_type": "object"
+      },
+      "status": "succeeded"
+    }
+  ],
+  "record_version": "1.0",
+  "registry_version": "amca-builtin-v1",
+  "run_status": "succeeded",
+  "runtime_version": "0.1.0",
+  "specification_sha256": "12b853dd8c630d9b36db9c308d5dda9f8446248cb90d48a328f917d192267991",
+  "verification": {
+    "assumptions": [
+      "Trusted component registry profile: amca-builtin-v1",
+      "Verification checks declared structure and interfaces only."
+    ],
+    "candidate_sha256": "90f1f0b5e9a27fed91364e1a923e9b78821bf9c24ddc2385b59fc475fd21c8da",
+    "checks": [
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "candidate_shape",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "graph_bounds",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "unique_node_ids",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "known_components",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "edge_endpoints",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "unique_connections",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "interface_compatibility",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "required_inputs",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "acyclic",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "registry_profile_binding",
+        "status": "passed"
+      }
+    ],
+    "profile_id": "amca-verifier-v1",
+    "reasons": [],
+    "report_version": "1.0",
+    "status": "verified"
+  }
+}
+REPORT_EXIT=0
+--- invalid graph rejection ---
+{
+  "candidate_sha256": "c87be49973157abf7de8910a0d1a22eb53f200d15ea3f3d33b72d05f618fe9d5",
+  "execution_order": [],
+  "inputs_sha256": "d82842c47aad2638b0d9782d31c61525eb8bf579c70284e2e5c3a69ea86cd572",
+  "machine_id": "reference-analysis-missing-branch",
+  "node_records": [],
+  "record_version": "1.0",
+  "refusal_reason": "Candidate lacks current matching verified evidence",
+  "registry_version": "amca-builtin-v1",
+  "run_status": "refused",
+  "runtime_version": "0.1.0",
+  "specification_sha256": "5e9a526f2719fa698096641cfda3d9db5a7b0ff62098751a25748eb87f77871c",
+  "verification": {
+    "assumptions": [
+      "Trusted component registry profile: amca-builtin-v1",
+      "Verification checks declared structure and interfaces only."
+    ],
+    "candidate_sha256": "c87be49973157abf7de8910a0d1a22eb53f200d15ea3f3d33b72d05f618fe9d5",
+    "checks": [
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "candidate_shape",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "graph_bounds",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "unique_node_ids",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "known_components",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "edge_endpoints",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "unique_connections",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "interface_compatibility",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 1
+        },
+        "id": "required_inputs",
+        "status": "failed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "acyclic",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "registry_profile_binding",
+        "status": "passed"
+      }
+    ],
+    "profile_id": "amca-verifier-v1",
+    "reasons": [
+      {
+        "code": "missing_required_input",
+        "message": "Missing required input port(s): finding_b",
+        "node_id": "aggregate"
+      }
+    ],
+    "report_version": "1.0",
+    "status": "rejected"
+  }
+}
+INVALID_EXPECTED_NONZERO_EXIT=1

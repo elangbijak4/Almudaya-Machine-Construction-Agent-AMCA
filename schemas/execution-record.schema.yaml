@@ -1,0 +1,74 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://amca.local/schemas/execution-record.schema.yaml"
+title: "AMCA Execution Record"
+type: object
+additionalProperties: false
+required: [record_version, machine_id, specification_sha256, candidate_sha256, inputs_sha256, verification, run_status, execution_order, node_records, registry_version, runtime_version]
+properties:
+  record_version:
+    const: "1.0"
+  machine_id:
+    type: string
+  specification_sha256:
+    $ref: "#/$defs/sha256"
+  candidate_sha256:
+    $ref: "#/$defs/sha256"
+  inputs_sha256:
+    $ref: "#/$defs/sha256"
+  verification:
+    $ref: "verification-report.schema.yaml"
+  run_status:
+    enum: [refused, succeeded, failed]
+  refusal_reason:
+    type: string
+    maxLength: 500
+  execution_order:
+    type: array
+    items: {type: string}
+  node_records:
+    type: array
+    items:
+      type: object
+      additionalProperties: false
+      required: [node_id, component, status]
+      properties:
+        node_id: {type: string}
+        component: {type: string}
+        status:
+          enum: [succeeded, failed, skipped]
+        output_summary:
+          type: object
+          additionalProperties: false
+          required: [sha256, byte_size, value_type]
+          properties:
+            sha256:
+              $ref: "#/$defs/sha256"
+            byte_size:
+              type: integer
+              minimum: 0
+              maximum: 65536
+            value_type:
+              type: string
+            safe_summary:
+              type: object
+              maxProperties: 4
+        error:
+          type: object
+          additionalProperties: false
+          required: [category, message]
+          properties:
+            category: {type: string}
+            message: {type: string}
+  registry_version:
+    type: string
+  runtime_version:
+    type: string
+  timestamp:
+    type: string
+    format: date-time
+  host_path:
+    type: string
+$defs:
+  sha256:
+    type: string
+    pattern: "^[0-9a-f]{64}$"

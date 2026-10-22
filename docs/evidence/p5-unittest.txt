@@ -1,0 +1,87 @@
+Command: .venv-p5\\Scripts\\python.exe -m unittest discover -s tests -p 'test_*.py' -v
+Interpreter: Python 3.12.14
+PyYAML: 6.0.3
+Environment: fresh project-local .venv-p5; dependencies installed from requirements-dev.txt
+Date: 2026-10-22
+--- unittest output ---
+test_cyclic_candidate_is_rejected_before_runtime (e2e.test_cli_reference.CliEndToEndTests.test_cyclic_candidate_is_rejected_before_runtime) ... ok
+test_duplicate_json_input_keys_are_rejected (e2e.test_cli_reference.CliEndToEndTests.test_duplicate_json_input_keys_are_rejected) ... ok
+test_invalid_missing_dependency_is_rejected_without_execution (e2e.test_cli_reference.CliEndToEndTests.test_invalid_missing_dependency_is_rejected_without_execution) ... ok
+test_report_command_displays_json_report (e2e.test_cli_reference.CliEndToEndTests.test_report_command_displays_json_report) ... ok
+test_validate_verify_and_run_reference_graph (e2e.test_cli_reference.CliEndToEndTests.test_validate_verify_and_run_reference_graph) ... ok
+test_output_digests_and_sizes_are_recorded (integration.test_evidence.EvidenceIntegrationTests.test_output_digests_and_sizes_are_recorded) ... ok
+test_repeated_runs_have_same_deterministic_evidence (integration.test_evidence.EvidenceIntegrationTests.test_repeated_runs_have_same_deterministic_evidence) ... ok
+test_direct_non_candidate_submission_is_refused (integration.test_runtime_admission.RuntimeAdmissionTests.test_direct_non_candidate_submission_is_refused) ... ok
+test_invalid_unknown_component_is_refused_before_any_invocation (integration.test_runtime_admission.RuntimeAdmissionTests.test_invalid_unknown_component_is_refused_before_any_invocation) ... ok
+test_missing_external_input_fails_before_component_execution (integration.test_runtime_admission.RuntimeAdmissionTests.test_missing_external_input_fails_before_component_execution) ... ok
+test_oversized_component_output_fails_closed (integration.test_runtime_admission.RuntimeAdmissionTests.test_oversized_component_output_fails_closed) ... ok
+test_report_mismatch_cannot_be_used_as_runtime_authorization (integration.test_runtime_admission.RuntimeAdmissionTests.test_report_mismatch_cannot_be_used_as_runtime_authorization) ... ok
+test_runtime_input_object_accepts_limit_and_rejects_one_over (integration.test_runtime_admission.RuntimeAdmissionTests.test_runtime_input_object_accepts_limit_and_rejects_one_over) ... ok
+test_stale_and_forged_verification_are_refused (integration.test_runtime_admission.RuntimeAdmissionTests.test_stale_and_forged_verification_are_refused) ... ok
+test_upstream_component_failure_skips_dependents (integration.test_runtime_admission.RuntimeAdmissionTests.test_upstream_component_failure_skips_dependents) ... ok
+test_valid_graph_executes_real_registry_and_returns_evidence (integration.test_runtime_admission.RuntimeAdmissionTests.test_valid_graph_executes_real_registry_and_returns_evidence) ... ok
+test_code_and_command_strings_are_only_data_and_unknown_fields_reject (security.test_untrusted_spec.UntrustedSpecificationTests.test_code_and_command_strings_are_only_data_and_unknown_fields_reject) ... ok
+test_dynamic_execution_and_process_launch_calls_are_absent (security.test_untrusted_spec.UntrustedSpecificationTests.test_dynamic_execution_and_process_launch_calls_are_absent) ... ok
+test_unknown_component_name_is_rejected (security.test_untrusted_spec.UntrustedSpecificationTests.test_unknown_component_name_is_rejected) ... ok
+test_owner_approved_p0_gate_passes (test_workflow_validator.WorkflowValidatorTests.test_owner_approved_p0_gate_passes) ... ok
+test_owner_approved_p1_gate_passes (test_workflow_validator.WorkflowValidatorTests.test_owner_approved_p1_gate_passes) ... ok
+test_owner_approved_p2_gate_passes (test_workflow_validator.WorkflowValidatorTests.test_owner_approved_p2_gate_passes) ... ok
+test_owner_approved_p3_gate_passes (test_workflow_validator.WorkflowValidatorTests.test_owner_approved_p3_gate_passes) ... ok
+test_scaffold_consistency_passes (test_workflow_validator.WorkflowValidatorTests.test_scaffold_consistency_passes) ... ok
+test_unapproved_p4_gate_is_blocked (test_workflow_validator.WorkflowValidatorTests.test_unapproved_p4_gate_is_blocked) ... FAIL
+test_object_key_order_is_canonical (unit.test_canonical.CanonicalTests.test_object_key_order_is_canonical) ... ok
+test_rejects_nonfinite_and_non_json_values (unit.test_canonical.CanonicalTests.test_rejects_nonfinite_and_non_json_values) ... ok
+test_utf8_is_stable (unit.test_canonical.CanonicalTests.test_utf8_is_stable) ... ok
+test_constructs_exact_six_nodes_and_six_edges (unit.test_constructor.ConstructorTests.test_constructs_exact_six_nodes_and_six_edges) ... ok
+test_node_and_edge_order_is_canonical (unit.test_constructor.ConstructorTests.test_node_and_edge_order_is_canonical) ... ok
+test_accepts_128_edges_and_rejects_129 (unit.test_limits.LimitTests.test_accepts_128_edges_and_rejects_129) ... ok
+test_accepts_64_nodes_and_rejects_65 (unit.test_limits.LimitTests.test_accepts_64_nodes_and_rejects_65) ... ok
+test_accepts_yaml_at_exact_byte_limit_and_rejects_one_over (unit.test_limits.LimitTests.test_accepts_yaml_at_exact_byte_limit_and_rejects_one_over) ... ok
+test_component_contracts_are_explicit (unit.test_registry.RegistryTests.test_component_contracts_are_explicit) ... ok
+test_registry_contains_exact_allowlist (unit.test_registry.RegistryTests.test_registry_contains_exact_allowlist) ... ok
+test_unknown_component_is_rejected (unit.test_registry.RegistryTests.test_unknown_component_is_rejected) ... ok
+test_canonical_serialization_is_repeatable (unit.test_reporting.ReportingTests.test_canonical_serialization_is_repeatable) ... ok
+test_report_contains_check_and_reason_contract (unit.test_reporting.ReportingTests.test_report_contains_check_and_reason_contract) ... ok
+test_cycle_is_rejected (unit.test_scheduler.SchedulerTests.test_cycle_is_rejected) ... ok
+test_missing_endpoint_is_rejected (unit.test_scheduler.SchedulerTests.test_missing_endpoint_is_rejected) ... ok
+test_order_respects_dependencies_and_uses_stable_tie_break (unit.test_scheduler.SchedulerTests.test_order_respects_dependencies_and_uses_stable_tie_break) ... ok
+test_rejects_duplicate_node_ids (unit.test_schema.SchemaTests.test_rejects_duplicate_node_ids) ... ok
+test_rejects_missing_and_unknown_fields (unit.test_schema.SchemaTests.test_rejects_missing_and_unknown_fields) ... ok
+test_rejects_non_json_values (unit.test_schema.SchemaTests.test_rejects_non_json_values) ... ok
+test_rejects_oversized_config (unit.test_schema.SchemaTests.test_rejects_oversized_config) ... ok
+test_rejects_too_many_nodes (unit.test_schema.SchemaTests.test_rejects_too_many_nodes) ... ok
+test_rejects_unknown_components_and_config_keys (unit.test_schema.SchemaTests.test_rejects_unknown_components_and_config_keys) ... ok
+test_rejects_unknown_edge_fields (unit.test_schema.SchemaTests.test_rejects_unknown_edge_fields) ... ok
+test_rejects_wrong_types_and_version (unit.test_schema.SchemaTests.test_rejects_wrong_types_and_version) ... ok
+test_valid_spec_maps_to_models (unit.test_schema.SchemaTests.test_valid_spec_maps_to_models) ... ok
+test_loads_valid_single_document (unit.test_specification.SpecificationTests.test_loads_valid_single_document) ... ok
+test_rejects_aliases_and_anchors (unit.test_specification.SpecificationTests.test_rejects_aliases_and_anchors) ... ok
+test_rejects_custom_tags (unit.test_specification.SpecificationTests.test_rejects_custom_tags) ... ok
+test_rejects_duplicate_keys (unit.test_specification.SpecificationTests.test_rejects_duplicate_keys) ... ok
+test_rejects_empty_and_non_mapping_roots (unit.test_specification.SpecificationTests.test_rejects_empty_and_non_mapping_roots) ... ok
+test_rejects_invalid_utf8 (unit.test_specification.SpecificationTests.test_rejects_invalid_utf8) ... ok
+test_rejects_malformed_yaml (unit.test_specification.SpecificationTests.test_rejects_malformed_yaml) ... ok
+test_rejects_multiple_documents (unit.test_specification.SpecificationTests.test_rejects_multiple_documents) ... ok
+test_rejects_oversized_yaml (unit.test_specification.SpecificationTests.test_rejects_oversized_yaml) ... ok
+test_bad_ports_and_double_connections_are_rejected (unit.test_verifier.VerifierTests.test_bad_ports_and_double_connections_are_rejected) ... ok
+test_duplicate_node_unknown_component_and_cycle_are_rejected (unit.test_verifier.VerifierTests.test_duplicate_node_unknown_component_and_cycle_are_rejected) ... ok
+test_failed_check_yields_inconclusive (unit.test_verifier.VerifierTests.test_failed_check_yields_inconclusive) ... ok
+test_incompatible_port_types_are_rejected (unit.test_verifier.VerifierTests.test_incompatible_port_types_are_rejected) ... ok
+test_invalid_node_identifier_is_rejected_even_for_direct_candidate (unit.test_verifier.VerifierTests.test_invalid_node_identifier_is_rejected_even_for_direct_candidate) ... ok
+test_missing_dependency_and_unknown_endpoint_are_rejected (unit.test_verifier.VerifierTests.test_missing_dependency_and_unknown_endpoint_are_rejected) ... ok
+test_profile_and_candidate_digest_are_bound (unit.test_verifier.VerifierTests.test_profile_and_candidate_digest_are_bound) ... ok
+test_reference_graph_passes_every_mandatory_check (unit.test_verifier.VerifierTests.test_reference_graph_passes_every_mandatory_check) ... ok
+
+======================================================================
+FAIL: test_unapproved_p4_gate_is_blocked (test_workflow_validator.WorkflowValidatorTests.test_unapproved_p4_gate_is_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AMCA_Waterfall_Scaffold_v0.2\tests\test_workflow_validator.py", line 37, in test_unapproved_p4_gate_is_blocked
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 67 tests in 2.642s
+
+FAILED (failures=1)
+UNITTEST_EXIT=1

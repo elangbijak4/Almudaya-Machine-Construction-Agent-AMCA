@@ -1,0 +1,134 @@
+schema_version: "1.0"
+project_id: "AMCA-POC"
+scaffold_version: "0.2.0"
+policy:
+  approval_required: true
+  evidence_required_for_each_criterion: true
+  approval_must_include: [approved_by, approved_at, decision_evidence]
+phases:
+  P0:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P0"
+    criteria:
+      P0-EC1:
+        status: "complete"
+        evidence_path: "docs/00-project-charter.md"
+        evidence_summary: "Owner approved charter defining the problem, objectives, scope, exclusions, stakeholders, and roles."
+      P0-EC2:
+        status: "complete"
+        evidence_path: "docs/00-project-charter.md"
+        evidence_summary: "Owner explicitly approved the six-stage branching DAG scenario and measurable high-level acceptance goals."
+      P0-EC3:
+        status: "complete"
+        evidence_path: "docs/00-project-charter.md"
+        evidence_summary: "Initial risks, assumptions, constraints, and safety boundaries are recorded."
+  P1:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P1"
+    criteria:
+      P1-EC1:
+        status: "complete"
+        evidence_path: "docs/01-requirements-specification.md"
+        evidence_summary: "FR-01–FR-10 and NFR-01–NFR-08 each have unique IDs, measurable acceptance criteria, and planned verification methods."
+      P1-EC2:
+        status: "complete"
+        evidence_path: "docs/01-requirements-specification.md"
+        evidence_summary: "Sections 4–6 define valid/invalid specifications, exclusions, trust boundaries, verification semantics, and refusal/failure behavior."
+      P1-EC3:
+        status: "complete"
+        evidence_path: "docs/traceability-matrix.md"
+        evidence_summary: "Every FR/NFR has a planned design artifact, implementation area, and verification evidence mapping."
+  P2:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P2"
+    criteria:
+      P2-EC1:
+        status: "complete"
+        evidence_path: "docs/02-system-architecture.md"
+        evidence_summary: "The system boundary, module responsibilities, trust roles, data flow, deterministic behavior, and failure states are defined."
+      P2-EC2:
+        status: "complete"
+        evidence_path: "docs/03-data-model-and-yaml-schemas.md"
+        evidence_summary: "Specification, graph, edge/port, component contracts, identity, verification report, and execution evidence formats are specified."
+      P2-EC3:
+        status: "complete"
+        evidence_path: "docs/04-verification-design.md"
+        evidence_summary: "Verifier independence, check/status semantics, digest binding, runtime admission, diagnostics, and limitations are defined; runtime controls are detailed in docs/05-runtime-and-execution-design.md."
+  P3:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P3"
+    criteria:
+      P3-EC1:
+        status: "complete"
+        evidence_path: "docs/06-implementation-plan.md"
+        evidence_summary: "The planned source/test tree, module contracts, implementation sequence, setup policy, and release procedure are specified."
+      P3-EC2:
+        status: "complete"
+        evidence_path: "docs/07-test-and-validation-plan.md"
+        evidence_summary: "Positive, negative/adversarial, boundary, unit, integration, end-to-end, CLI, reproducibility, and acceptance evidence cases are defined."
+      P3-EC3:
+        status: "complete"
+        evidence_path: "docs/traceability-matrix.md"
+        evidence_summary: "All FR/NFR identifiers map to design, planned source areas, and test/evidence paths."
+  P4:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P4"
+    criteria:
+      P4-EC1:
+        status: "complete"
+        evidence_path: "docs/08-implementation-record.md"
+        evidence_summary: "The approved PoC modules are implemented and mapped to requirements/tests; documented deviations and limitations are explicit."
+      P4-EC2:
+        status: "complete"
+        evidence_path: "docs/evidence/p4-unittest.txt"
+        evidence_summary: "The actual verbose unittest run records 67 tests passed with zero failures, errors, or skips; CLI E2E, integration, unit, and security tests are included."
+      P4-EC3:
+        status: "complete"
+        evidence_path: "tests/security/test_untrusted_spec.py"
+        evidence_summary: "Source-level tests confirm no dynamic evaluation or process launch path; runtime dispatch is fixed to the built-in allowlist. This is not a security certification."
+  P5:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P5"
+    criteria:
+      P5-EC1:
+        status: "complete"
+        evidence_path: "docs/evidence/p5-final-checks.txt"
+        evidence_summary: "Final clean-environment run records 68 passed, 0 failures/errors/skips, compile success, scaffold success, and P4 gate pass. The initial stale workflow-test failure and correction are also preserved in the earlier run logs."
+      P5-EC2:
+        status: "complete"
+        evidence_path: "docs/evidence/p5-example-runs.txt"
+        evidence_summary: "The valid reference graph verified and executed through the CLI with the expected six-node order and safe summary; invalid missing-dependency graph was refused with zero node records."
+      P5-EC3:
+        status: "complete"
+        evidence_path: "docs/09-verification-report.md"
+        evidence_summary: "Known runtime, schema-validation, parallelism, and proof limitations are explicit; the discovered stale-test defect was corrected and no unexplained test failures remain."
+  P6:
+    approval_status: "approved"
+    approved_by: "Project owner"
+    approved_at: "2026-10-22"
+    decision_evidence: "Explicit approval in chat: APPROVE P6"
+    criteria:
+      P6-EC1:
+        status: "complete"
+        evidence_path: "docs/evidence/p6-clean-setup.txt"
+        evidence_summary: "A fresh project-local CPython 3.12.14 venv was created, requirements-dev.txt installed, package inventory captured, and pip check passed."
+      P6-EC2:
+        status: "complete"
+        evidence_path: "docs/evidence/p6-owner-approval-confirmation.txt"
+        evidence_summary: "After P6 approval, the clean-environment final suite passed 69/69 and scaffold, P5, and P6 gates all passed; the traceability audit found all 18 FR/NFR IDs and 26 source/test path references."
+      P6-EC3:
+        status: "complete"
+        evidence_path: "docs/10-release-and-evaluation.md"
+        evidence_summary: "Release scope, known limitations, demonstrated claims, and unevaluated research hypotheses are documented without claiming formal proof or production readiness."

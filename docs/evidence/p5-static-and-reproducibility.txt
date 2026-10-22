@@ -1,0 +1,18 @@
+P5 static, dependency, workflow, and deterministic rerun checks
+Interpreter: Python 3.12.14
+PyYAML: 6.0.3
+Date: 2026-10-22
+No broken requirements found.
+PIP_CHECK_EXIT=0
+COMPILEALL_EXIT=0
+Parsed 6 YAML schema/example files and 1 JSON input
+YAML_JSON_PARSE_EXIT=0
+REPEAT_RUN_EXIT=0
+Deterministic fields match; reference output confirmed
+DETERMINISTIC_COMPARE_EXIT=0
+AMCA workflow validation: PASS
+Scaffold consistency checks passed. This does not establish software correctness.
+SCAFFOLD_EXIT=0
+AMCA workflow validation: PASS
+Scaffold consistency checks passed. This does not establish software correctness.
+P4_GATE_EXIT=0

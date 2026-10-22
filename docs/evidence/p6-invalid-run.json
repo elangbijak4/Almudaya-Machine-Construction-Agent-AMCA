@@ -1,0 +1,102 @@
+{
+  "candidate_sha256": "c87be49973157abf7de8910a0d1a22eb53f200d15ea3f3d33b72d05f618fe9d5",
+  "execution_order": [],
+  "inputs_sha256": "d82842c47aad2638b0d9782d31c61525eb8bf579c70284e2e5c3a69ea86cd572",
+  "machine_id": "reference-analysis-missing-branch",
+  "node_records": [],
+  "record_version": "1.0",
+  "refusal_reason": "Candidate lacks current matching verified evidence",
+  "registry_version": "amca-builtin-v1",
+  "run_status": "refused",
+  "runtime_version": "0.1.0",
+  "specification_sha256": "5e9a526f2719fa698096641cfda3d9db5a7b0ff62098751a25748eb87f77871c",
+  "verification": {
+    "assumptions": [
+      "Trusted component registry profile: amca-builtin-v1",
+      "Verification checks declared structure and interfaces only."
+    ],
+    "candidate_sha256": "c87be49973157abf7de8910a0d1a22eb53f200d15ea3f3d33b72d05f618fe9d5",
+    "checks": [
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "candidate_shape",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "graph_bounds",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "unique_node_ids",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "known_components",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "edge_endpoints",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "unique_connections",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "interface_compatibility",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 1
+        },
+        "id": "required_inputs",
+        "status": "failed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "acyclic",
+        "status": "passed"
+      },
+      {
+        "details": {
+          "reason_count": 0
+        },
+        "id": "registry_profile_binding",
+        "status": "passed"
+      }
+    ],
+    "profile_id": "amca-verifier-v1",
+    "reasons": [
+      {
+        "code": "missing_required_input",
+        "message": "Missing required input port(s): finding_b",
+        "node_id": "aggregate"
+      }
+    ],
+    "report_version": "1.0",
+    "status": "rejected"
+  }
+}

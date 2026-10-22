@@ -1,0 +1,29 @@
+schema_version: "1.0"
+machine_id: "reference-analysis"
+nodes:
+  - id: "input"
+    component: "input_source"
+    config:
+      input_key: "text"
+  - id: "validate"
+    component: "validate_text"
+    config: {}
+  - id: "analysis_a"
+    component: "analysis_a"
+    config: {}
+  - id: "analysis_b"
+    component: "analysis_b"
+    config: {}
+  - id: "aggregate"
+    component: "aggregate_results"
+    config: {}
+  - id: "report"
+    component: "generate_report"
+    config: {}
+edges:
+  - {from: "input", out: "text", to: "validate", in: "text"}
+  - {from: "validate", out: "text", to: "analysis_a", in: "text"}
+  - {from: "validate", out: "text", to: "analysis_b", in: "text"}
+  - {from: "analysis_a", out: "finding", to: "aggregate", in: "finding_a"}
+  - {from: "analysis_b", out: "finding", to: "aggregate", in: "finding_b"}
+  - {from: "aggregate", out: "summary", to: "report", in: "summary"}
