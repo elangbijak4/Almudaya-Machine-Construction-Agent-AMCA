@@ -119,17 +119,19 @@ Requires CPython 3.12+ and the base dependencies. From the repository root in Po
 
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+$Python = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $Python)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+& $Python -m pip install -r requirements-dev.txt
 $env:PYTHONPATH = "src"
 
 # Validate or verify without running the machine
-.\.venv\Scripts\python.exe -m amca.cli validate examples/valid_parallel_analysis.yaml
-.\.venv\Scripts\python.exe -m amca.cli verify examples/valid_parallel_analysis.yaml
+& $Python -m amca.cli validate examples/valid_parallel_analysis.yaml
+& $Python -m amca.cli verify examples/valid_parallel_analysis.yaml
 
 # Run the reference graph and save its JSON execution record
-.\.venv\Scripts\python.exe -m amca.cli run examples/valid_parallel_analysis.yaml `
+& $Python -m amca.cli run examples/valid_parallel_analysis.yaml `
     --inputs examples/reference-input.json --output run.json
-.\.venv\Scripts\python.exe -m amca.cli report run.json
+& $Python -m amca.cli report run.json
 ```
 
 The sample input `AMCA builds a graph.` produces `characters=20; words=4`. The negative example `examples/invalid_missing_dependency.yaml` is missing an Aggregate dependency and should be rejected before any component executes.
@@ -140,9 +142,11 @@ The web UI adds Streamlit while keeping it out of the CLI's base dependency set:
 
 ```powershell
 py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-app.txt
+$Python = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $Python)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+& $Python -m pip install -r requirements-app.txt
 $env:PYTHONPATH = "src"
-.\.venv\Scripts\python.exe -m streamlit run app.py
+& $Python -m streamlit run app.py
 ```
 
 Open [http://localhost:8501](http://localhost:8501). Choose an example YAML or write a problem statement. To generate/revise YAML, select a provider and enter its API key in the sidebar. The statement, recent chat, and current YAML are sent to that provider; do not submit information you do not want to transmit. The API key is kept in the active UI session and is not written to AMCA artifacts.

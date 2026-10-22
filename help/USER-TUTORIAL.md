@@ -8,9 +8,11 @@ Tutorial ini mengeksekusi graph referensi end-to-end melalui GUI dan CLI. Jalur 
 
    ```powershell
    py -3.12 -m venv .venv
-   .\.venv\Scripts\python.exe -m pip install -r requirements-app.txt
+   $Python = ".\.venv\Scripts\python.exe"
+   if (-not (Test-Path $Python)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+   & $Python -m pip install -r requirements-app.txt
    $env:PYTHONPATH = "src"
-   .\.venv\Scripts\python.exe -m streamlit run app.py
+   & $Python -m streamlit run app.py
    ```
 
 2. Buka [http://localhost:8501](http://localhost:8501).
@@ -27,9 +29,10 @@ Jalankan dari PowerShell root proyek:
 
 ```powershell
 py -3.12 -m venv .venv
-\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-$env:PYTHONPATH = "src"
 $PY = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $PY)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+& $PY -m pip install -r requirements-dev.txt
+$env:PYTHONPATH = "src"
 
 & $PY -m amca_agent.cli examples
 & $PY -m amca_agent.cli example valid_parallel_analysis --output machine.yaml

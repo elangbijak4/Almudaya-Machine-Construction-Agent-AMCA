@@ -20,11 +20,13 @@ Gunakan Windows PowerShell dari root repository dan CPython 3.12+. CLI dasar mem
 
 ```powershell
 py -3.12 -m venv .venv
-\.venv\Scripts\python.exe -m pip install -r requirements-app.txt
+$Python = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $Python)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+& $Python -m pip install -r requirements-app.txt
 $env:PYTHONPATH = "src"
 ```
 
-Untuk hanya CLI inti, instal `requirements-dev.txt`. Untuk GUI jalankan `\.venv\Scripts\python.exe -m streamlit run app.py`, lalu buka `http://localhost:8501`. Untuk bantuan CLI agent, jalankan `\.venv\Scripts\python.exe -m amca_agent.cli --help`.
+Untuk hanya CLI inti, ganti `requirements-app.txt` dengan `requirements-dev.txt`. Jalankan GUI menggunakan `& $Python -m streamlit run app.py`, lalu buka `http://localhost:8501`. Untuk bantuan CLI agent, jalankan `& $Python -m amca_agent.cli --help`.
 
 ## 3. Model data dan kontrak
 
@@ -66,6 +68,7 @@ Atur jalur modul satu kali:
 ```powershell
 $env:PYTHONPATH = "src"
 $PY = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $PY)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
 ```
 
 ### YAML dan validasi

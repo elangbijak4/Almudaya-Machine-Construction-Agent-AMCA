@@ -19,9 +19,11 @@ Di PowerShell dari root repository:
 
 ```powershell
 py -3.12 -m venv .venv
-\.venv\Scripts\python.exe -m pip install -r requirements-app.txt
+$Python = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $Python)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+& $Python -m pip install -r requirements-app.txt
 $env:PYTHONPATH = "src"
-\.venv\Scripts\python.exe -m streamlit run app.py
+& $Python -m streamlit run app.py
 ```
 
 Buka [http://localhost:8501](http://localhost:8501). GUI dapat digunakan sepenuhnya lokal dengan memilih YAML contoh; API key hanya dibutuhkan saat meminta AI.
@@ -52,9 +54,11 @@ Siapkan venv dan modul:
 
 ```powershell
 py -3.12 -m venv .venv
-\.venv\Scripts\python.exe -m pip install -r requirements-app.txt
+$Python = ".\.venv\Scripts\python.exe"
+if (-not (Test-Path $Python)) { throw "Virtual environment not found. Run: py -3.12 -m venv .venv" }
+& $Python -m pip install -r requirements-app.txt
 $env:PYTHONPATH = "src"
-$PY = ".\.venv\Scripts\python.exe"
+$PY = $Python
 ```
 
 Contoh tanpa AI:
