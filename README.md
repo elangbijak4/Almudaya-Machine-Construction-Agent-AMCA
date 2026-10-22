@@ -168,6 +168,10 @@ Typical run artifacts:
 
 The UI can display and download run artifacts and reload locally saved chat sessions/versions. Chat text and YAML are stored on the local machine, so treat that folder as user data. API keys are excluded.
 
+## User documentation
+
+Detailed Indonesian manuals are in [`help/`](help/): [User Manual](help/USER-MANUAL.md), [User Guide](help/USER-GUIDE.md), and [User Tutorial](help/USER-TUTORIAL.md). The optional agent CLI (`python -m amca_agent.cli`) provides example selection, AI authoring and chat revisions, validation, DAG export, saved-session loading, and artifact inspection. Its `chat` workflow asks for explicit `RUN` approval, while its noninteractive `run` command does not prompt. PowerShell scripts for common GUI/CLI workflows are in [`help/scripts/`](help/scripts/).
+
 ## Limitations and safety boundaries
 
 - The reference implementation is a fixed component graph class with six trusted built-ins. It does not generate new executable component implementations.

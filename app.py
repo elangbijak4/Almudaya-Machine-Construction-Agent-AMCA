@@ -186,7 +186,7 @@ with right:
 
 if st.session_state.candidate is not None and st.session_state.verification and st.session_state.verification.status == "verified":
     st.subheader("4 · Graf DAG mesin")
-    st.graphviz_chart(st.session_state.dot, width="stretch", alt="Graf DAG dari spesifikasi mesin yang lolos verifikasi AMCA")
+    st.graphviz_chart(st.session_state.dot, width="stretch")
     st.download_button("Unduh graf DAG (.dot)", st.session_state.dot, file_name="machine-dag.dot", mime="text/vnd.graphviz")
     with st.expander("Candidate graph JSON"):
         st.json(st.session_state.candidate.as_dict())
